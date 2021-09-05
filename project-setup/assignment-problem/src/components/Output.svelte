@@ -1,6 +1,8 @@
 <script>
-    export let redOrNot;
-    export let goal;
+    export let courseGoal;
+    export let ifRed;
+
+   $: ifRed = courseGoal.indexOf('!')>-1;
     
 </script>
 
@@ -10,4 +12,4 @@
     }
   </style>
 
-<h1 class="output" class:red="{redOrNot}">{goal}</h1>
+<h1 class="output" class:red="{ifRed}">{courseGoal}</h1>

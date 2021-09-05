@@ -371,10 +371,10 @@ var app = (function () {
     	const block = {
     		c: function create() {
     			h1 = element("h1");
-    			t = text(/*goal*/ ctx[1]);
+    			t = text(/*courseGoal*/ ctx[1]);
     			attr_dev(h1, "class", "output svelte-1t9t5kv");
-    			toggle_class(h1, "red", /*redOrNot*/ ctx[0]);
-    			add_location(h1, file$1, 12, 0, 138);
+    			toggle_class(h1, "red", /*ifRed*/ ctx[0]);
+    			add_location(h1, file$1, 14, 0, 186);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -384,10 +384,10 @@ var app = (function () {
     			append_dev(h1, t);
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*goal*/ 2) set_data_dev(t, /*goal*/ ctx[1]);
+    			if (dirty & /*courseGoal*/ 2) set_data_dev(t, /*courseGoal*/ ctx[1]);
 
-    			if (dirty & /*redOrNot*/ 1) {
-    				toggle_class(h1, "red", /*redOrNot*/ ctx[0]);
+    			if (dirty & /*ifRed*/ 1) {
+    				toggle_class(h1, "red", /*ifRed*/ ctx[0]);
     			}
     		},
     		i: noop,
@@ -411,37 +411,43 @@ var app = (function () {
     function instance$1($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('Output', slots, []);
-    	let { redOrNot } = $$props;
-    	let { goal } = $$props;
-    	const writable_props = ['redOrNot', 'goal'];
+    	let { courseGoal } = $$props;
+    	let { ifRed } = $$props;
+    	const writable_props = ['courseGoal', 'ifRed'];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<Output> was created with unknown prop '${key}'`);
     	});
 
     	$$self.$$set = $$props => {
-    		if ('redOrNot' in $$props) $$invalidate(0, redOrNot = $$props.redOrNot);
-    		if ('goal' in $$props) $$invalidate(1, goal = $$props.goal);
+    		if ('courseGoal' in $$props) $$invalidate(1, courseGoal = $$props.courseGoal);
+    		if ('ifRed' in $$props) $$invalidate(0, ifRed = $$props.ifRed);
     	};
 
-    	$$self.$capture_state = () => ({ redOrNot, goal });
+    	$$self.$capture_state = () => ({ courseGoal, ifRed });
 
     	$$self.$inject_state = $$props => {
-    		if ('redOrNot' in $$props) $$invalidate(0, redOrNot = $$props.redOrNot);
-    		if ('goal' in $$props) $$invalidate(1, goal = $$props.goal);
+    		if ('courseGoal' in $$props) $$invalidate(1, courseGoal = $$props.courseGoal);
+    		if ('ifRed' in $$props) $$invalidate(0, ifRed = $$props.ifRed);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [redOrNot, goal];
+    	$$self.$$.update = () => {
+    		if ($$self.$$.dirty & /*courseGoal*/ 2) {
+    			$$invalidate(0, ifRed = courseGoal.indexOf('!') > -1);
+    		}
+    	};
+
+    	return [ifRed, courseGoal];
     }
 
     class Output extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$1, create_fragment$1, safe_not_equal, { redOrNot: 0, goal: 1 });
+    		init(this, options, instance$1, create_fragment$1, safe_not_equal, { courseGoal: 1, ifRed: 0 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -453,28 +459,28 @@ var app = (function () {
     		const { ctx } = this.$$;
     		const props = options.props || {};
 
-    		if (/*redOrNot*/ ctx[0] === undefined && !('redOrNot' in props)) {
-    			console.warn("<Output> was created without expected prop 'redOrNot'");
+    		if (/*courseGoal*/ ctx[1] === undefined && !('courseGoal' in props)) {
+    			console.warn("<Output> was created without expected prop 'courseGoal'");
     		}
 
-    		if (/*goal*/ ctx[1] === undefined && !('goal' in props)) {
-    			console.warn("<Output> was created without expected prop 'goal'");
+    		if (/*ifRed*/ ctx[0] === undefined && !('ifRed' in props)) {
+    			console.warn("<Output> was created without expected prop 'ifRed'");
     		}
     	}
 
-    	get redOrNot() {
+    	get courseGoal() {
     		throw new Error("<Output>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
-    	set redOrNot(value) {
+    	set courseGoal(value) {
     		throw new Error("<Output>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
-    	get goal() {
+    	get ifRed() {
     		throw new Error("<Output>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
-    	set goal(value) {
+    	set ifRed(value) {
     		throw new Error("<Output>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
     }
@@ -485,15 +491,15 @@ var app = (function () {
     function create_fragment(ctx) {
     	let input;
     	let t;
-    	let output_1;
+    	let output;
     	let current;
     	let mounted;
     	let dispose;
 
-    	output_1 = new Output({
+    	output = new Output({
     			props: {
-    				redOrNot: /*redOrNot*/ ctx[1],
-    				goal: /*goal*/ ctx[0]
+    				ifRed: /*redOrNot*/ ctx[1],
+    				courseGoal: /*goal*/ ctx[0]
     			},
     			$$inline: true
     		});
@@ -502,9 +508,9 @@ var app = (function () {
     		c: function create() {
     			input = element("input");
     			t = space();
-    			create_component(output_1.$$.fragment);
+    			create_component(output.$$.fragment);
     			attr_dev(input, "type", "text");
-    			add_location(input, file, 21, 0, 381);
+    			add_location(input, file, 8, 0, 110);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -513,15 +519,11 @@ var app = (function () {
     			insert_dev(target, input, anchor);
     			set_input_value(input, /*goal*/ ctx[0]);
     			insert_dev(target, t, anchor);
-    			mount_component(output_1, target, anchor);
+    			mount_component(output, target, anchor);
     			current = true;
 
     			if (!mounted) {
-    				dispose = [
-    					listen_dev(input, "input", /*input_input_handler*/ ctx[3]),
-    					listen_dev(input, "input", /*input_handler*/ ctx[4], false, false, false)
-    				];
-
+    				dispose = listen_dev(input, "input", /*input_input_handler*/ ctx[2]);
     				mounted = true;
     			}
     		},
@@ -530,26 +532,25 @@ var app = (function () {
     				set_input_value(input, /*goal*/ ctx[0]);
     			}
 
-    			const output_1_changes = {};
-    			if (dirty & /*redOrNot*/ 2) output_1_changes.redOrNot = /*redOrNot*/ ctx[1];
-    			if (dirty & /*goal*/ 1) output_1_changes.goal = /*goal*/ ctx[0];
-    			output_1.$set(output_1_changes);
+    			const output_changes = {};
+    			if (dirty & /*goal*/ 1) output_changes.courseGoal = /*goal*/ ctx[0];
+    			output.$set(output_changes);
     		},
     		i: function intro(local) {
     			if (current) return;
-    			transition_in(output_1.$$.fragment, local);
+    			transition_in(output.$$.fragment, local);
     			current = true;
     		},
     		o: function outro(local) {
-    			transition_out(output_1.$$.fragment, local);
+    			transition_out(output.$$.fragment, local);
     			current = false;
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(input);
     			if (detaching) detach_dev(t);
-    			destroy_component(output_1, detaching);
+    			destroy_component(output, detaching);
     			mounted = false;
-    			run_all(dispose);
+    			dispose();
     		}
     	};
 
@@ -564,21 +565,11 @@ var app = (function () {
     	return block;
     }
 
-    function outputValue(event) {
-    	const enteredValue = event.target.value;
-    	output = enteredValue;
-    }
-
     function instance($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('App', slots, []);
     	let goal = '';
     	let redOrNot = null;
-
-    	function evaluate() {
-    		$$invalidate(1, redOrNot = goal.indexOf('!') > -1);
-    	}
-
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
@@ -590,15 +581,7 @@ var app = (function () {
     		$$invalidate(0, goal);
     	}
 
-    	const input_handler = () => evaluate();
-
-    	$$self.$capture_state = () => ({
-    		Output,
-    		goal,
-    		redOrNot,
-    		outputValue,
-    		evaluate
-    	});
+    	$$self.$capture_state = () => ({ Output, goal, redOrNot });
 
     	$$self.$inject_state = $$props => {
     		if ('goal' in $$props) $$invalidate(0, goal = $$props.goal);
@@ -609,7 +592,7 @@ var app = (function () {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [goal, redOrNot, evaluate, input_input_handler, input_handler];
+    	return [goal, redOrNot, input_input_handler];
     }
 
     class App extends SvelteComponentDev {

@@ -3,28 +3,17 @@
 
   let goal = ''
   let redOrNot = null
-  // var format =  /!/
-  // var contains = format.test(document.querySelector(".output").value)
-
-  function outputValue (event) {
-    const enteredValue = event.target.value
-    output = enteredValue
-  }
-
-  function evaluate() {
-    redOrNot = goal.indexOf('!')>-1
-  }
-
 </script>
 
 
-
-<input type="text" bind:value="{goal}" on:input="{() => evaluate()}">
+<input type="text" bind:value="{goal}">
 <Output 
-  redOrNot="{redOrNot}"
-  {goal}
+  ifRed="{redOrNot}"
+  courseGoal="{goal}"
 />
 
+
+<!-- instructions -->
 <!-- <h1>Assignment</h1>
 
 <p>Solve these tasks.</p>
