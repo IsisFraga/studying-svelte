@@ -12,6 +12,8 @@
   courseGoal="{goal}"
 />
 
+
+<!-- instructions -->
 <!-- <h1>Assignment</h1>
 
 <p>Solve these tasks.</p>
