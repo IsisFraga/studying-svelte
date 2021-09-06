@@ -450,14 +450,14 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (49:34) 
+    // (50:34) 
     function create_if_block_4(ctx) {
     	let p;
 
     	const block = {
     		c: function create() {
     			p = element("p");
-    			add_location(p, file, 49, 2, 1171);
+    			add_location(p, file, 50, 2, 1228);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -472,14 +472,14 @@ var app = (function () {
     		block,
     		id: create_if_block_4.name,
     		type: "if",
-    		source: "(49:34) ",
+    		source: "(50:34) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (47:33) 
+    // (48:33) 
     function create_if_block_3(ctx) {
     	let p;
     	let t;
@@ -488,7 +488,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			t = text(/*password*/ ctx[0]);
-    			add_location(p, file, 47, 2, 1116);
+    			add_location(p, file, 48, 2, 1173);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -506,14 +506,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3.name,
     		type: "if",
-    		source: "(47:33) ",
+    		source: "(48:33) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (45:35) 
+    // (46:35) 
     function create_if_block_2(ctx) {
     	let p;
 
@@ -521,7 +521,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			p.textContent = "Please provide a password shorter than 10 characters.";
-    			add_location(p, file, 45, 2, 1019);
+    			add_location(p, file, 46, 2, 1076);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -536,14 +536,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2.name,
     		type: "if",
-    		source: "(45:35) ",
+    		source: "(46:35) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (43:36) 
+    // (44:36) 
     function create_if_block_1(ctx) {
     	let p;
 
@@ -551,7 +551,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			p.textContent = "Please provide a password longer than 5 characters.";
-    			add_location(p, file, 43, 2, 922);
+    			add_location(p, file, 44, 2, 979);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -566,14 +566,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(43:36) ",
+    		source: "(44:36) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (41:0) {#if pwdStatus === 'empty'}
+    // (42:0) {#if pwdStatus === 'empty'}
     function create_if_block(ctx) {
     	let p;
 
@@ -581,7 +581,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			p.textContent = "Please insert password.";
-    			add_location(p, file, 41, 2, 852);
+    			add_location(p, file, 42, 2, 909);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -596,14 +596,14 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(41:0) {#if pwdStatus === 'empty'}",
+    		source: "(42:0) {#if pwdStatus === 'empty'}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (52:0) {#each pwdList as pwd, i(pwd.id)}
+    // (53:0) {#each pwdList as pwd, i(pwd.id)}
     function create_each_block(key_1, ctx) {
     	let h2;
     	let t0;
@@ -626,8 +626,8 @@ var app = (function () {
     			t2 = space();
     			li = element("li");
     			t3 = text(t3_value);
-    			add_location(h2, file, 52, 1, 1220);
-    			add_location(li, file, 53, 1, 1240);
+    			add_location(h2, file, 53, 1, 1277);
+    			add_location(li, file, 54, 1, 1297);
     			this.first = h2;
     		},
     		m: function mount(target, anchor) {
@@ -643,7 +643,7 @@ var app = (function () {
     					li,
     					"click",
     					function () {
-    						if (is_function(/*deletePwd*/ ctx[5](/*pwd*/ ctx[7].id))) /*deletePwd*/ ctx[5](/*pwd*/ ctx[7].id).apply(this, arguments);
+    						if (is_function(/*deletePwd*/ ctx[5](/*pwd*/ ctx[7]))) /*deletePwd*/ ctx[5](/*pwd*/ ctx[7]).apply(this, arguments);
     					},
     					false,
     					false,
@@ -671,7 +671,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(52:0) {#each pwdList as pwd, i(pwd.id)}",
+    		source: "(53:0) {#each pwdList as pwd, i(pwd.id)}",
     		ctx
     	});
 
@@ -728,8 +728,8 @@ var app = (function () {
     			each_1_anchor = empty();
     			attr_dev(input, "type", "password");
     			attr_dev(input, "id", "password");
-    			add_location(input, file, 37, 0, 679);
-    			add_location(button, file, 38, 0, 767);
+    			add_location(input, file, 38, 0, 736);
+    			add_location(button, file, 39, 0, 824);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -844,8 +844,10 @@ var app = (function () {
     		}
     	}
 
-    	function deletePwd(id) {
-    		$$invalidate(2, pwdList = pwdList.filter(passw => passw.id != id));
+    	// destructuring with rename
+    	function deletePwd({ id: idi }) {
+    		//regular destructuring
+    		$$invalidate(2, pwdList = pwdList.filter(({ id }) => id != idi));
     	}
 
     	const writable_props = [];

@@ -27,9 +27,10 @@
 			pwdStatus = 'typing'
 		}
 	}
-
-	function deletePwd(id) {
-		pwdList = pwdList.filter(passw => passw.id != id)
+// destructuring with rename
+	function deletePwd({id: idi}) {
+		//regular destructuring
+		pwdList = pwdList.filter(({id}) => id != idi)
 	}
 
 
@@ -51,7 +52,7 @@
 {/if}
 {#each pwdList as pwd, i(pwd.id)}
 	<h2># {i + 1}</h2>
-	<li on:click="{deletePwd(pwd.id)}">{pwd.password}</li>
+	<li on:click="{deletePwd(pwd)}">{pwd.password}</li>
 {/each}
 
 <!-- <h1>Assignment</h1>
